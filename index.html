@@ -1,197 +1,51 @@
-```
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-```
+<section class="stopwatch-section" id="stopwatch">
 
-```
-<!-- Floating Background Blobs -->
+    <div class="stopwatch-card">
 
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
-<div class="blob blob3"></div>
+        <h2>Velune Stopwatch</h2>
 
-<!-- Navbar -->
+        <div id="display">
+            00 : 00 : 00 : 000
+        </div>
 
-<nav class="navbar">
+        <div class="controls">
 
-    <div class="logo">
-        ✨ Velune
-    </div>
-
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#stopwatch">Stopwatch</a></li>
-        <li><a href="#focus">Focus Mode</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <button class="theme-btn">
-        🌙
-    </button>
-
-</nav>
-
-<!-- Hero Section -->
-
-<section class="hero" id="home">
-
-    <div class="glass-card">
-
-        <h1>
-            Modern Aesthetic
-            <span>Stopwatch Experience</span>
-        </h1>
-
-        <p>
-            A dreamy productivity stopwatch application with focus mode,
-            immersive visuals, calming animations, achievements,
-            ambient sounds and modern SaaS-inspired design.
-        </p>
-
-        <div class="hero-buttons">
-
-            <button class="primary-btn">
-                Start Focus Session
+            <button onclick="startTimer()">
+                Start
             </button>
 
-            <button class="secondary-btn">
-                Explore Features
+            <button onclick="pauseTimer()">
+                Pause
+            </button>
+
+            <button onclick="resetTimer()">
+                Reset
+            </button>
+
+            <button onclick="addLap()">
+                Lap
             </button>
 
         </div>
 
-    </div>
+        <div class="stats">
 
-</section>
+            <div>
+                <h3 id="lapCount">0</h3>
+                <p>Total Laps</p>
+            </div>
 
-<!-- Features Section -->
+            <div>
+                <h3 id="bestLap">--</h3>
+                <p>Fastest Lap</p>
+            </div>
 
-<section class="features" id="features">
-
-    <h2>Why Choose Velune?</h2>
-
-    <div class="feature-grid">
-
-        <div class="feature-card">
-            ⏱️
-            <h3>Accurate Stopwatch</h3>
-            <p>Track every second with precision timing.</p>
         </div>
 
-        <div class="feature-card">
-            🌙
-            <h3>Focus Mode</h3>
-            <p>Distraction-free productivity sessions.</p>
-        </div>
-
-        <div class="feature-card">
-            🎵
-            <h3>Ambient Sounds</h3>
-            <p>Relax with rain, ocean, and lofi sounds.</p>
-        </div>
-
-        <div class="feature-card">
-            🏆
-            <h3>Achievements</h3>
-            <p>Unlock rewards as your productivity grows.</p>
+        <div class="laps" id="laps">
         </div>
 
     </div>
 
 </section>
-
-<!-- Stopwatch Preview -->
-
-<section class="preview" id="stopwatch">
-
-    <div class="preview-card">
-
-        <h2>Productivity Starts Here</h2>
-
-        <div class="timer-preview">
-            00 : 00 : 00 : 00
-        </div>
-
-        <button class="primary-btn">
-            Launch Stopwatch
-        </button>
-
-    </div>
-
-</section>
-
-<!-- About Section -->
-a`
-<section class="about" id="about">.
-
-    <div class="about-content">
-
-        <div class="about-text">
-
-            <h2>About Velune</h2>
-
-            <p>
-                Velune is a premium aesthetic productivity stopwatch
-                experience designed using HTML, CSS and JavaScript.
-                It combines focus tools, gamification, achievements,
-                calming animations and beautiful glassmorphism design.
-            </p>
-
-        </div>
-
-        <div class="about-image">
-            🌈
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Contact Section -->
-
-<section class="contact" id="contact">
-
-    <h2>Contact Us</h2>
-
-    <form class="contact-form">
-
-        <input type="text" placeholder="Your Name">
-
-        <input type="email" placeholder="Your Email">
-
-        <textarea rows="5" placeholder="Your Message"></textarea>
-
-        <button type="submit" class="primary-btn">
-            Send Message
-        </button>
-
-    </form>
-
-</section>
-
-<!-- Footer -->
-
-<footer>
-
-    <h3>Velune</h3>
-
-    <p>
-        Premium Productivity Stopwatch Experience
-    </p>
-
-    <div class="socials">
-        🌐 📸 🐦 💼
-    </div>
-
-    <p>
-        © 2026 Velune. All Rights Reserved.
-    </p>
-
-</footer>
-
-<script src="script.js"></script>
-```
