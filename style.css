@@ -1,16 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #EAF3FF,
+        #DDEBFF
+    );
+}
+
 .stopwatch-section{
+    width:100%;
     padding:100px 20px;
     display:flex;
     justify-content:center;
 }
 
 .stopwatch-card{
+
     width:90%;
     max-width:800px;
+
     padding:40px;
+
     border-radius:30px;
 
     backdrop-filter:blur(20px);
+
     background:rgba(255,255,255,0.2);
 
     border:1px solid rgba(255,255,255,0.3);
@@ -20,28 +45,44 @@
     text-align:center;
 }
 
+.stopwatch-card h2{
+
+    font-size:2rem;
+
+    color:#1A202C;
+
+    margin-bottom:20px;
+}
+
 #display{
 
-    font-size:3rem;
+    font-size:4rem;
+
     font-weight:700;
 
-    margin:30px 0;
+    letter-spacing:2px;
 
     color:#2D3748;
+
+    margin:30px 0;
 }
 
 .controls{
 
     display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
 
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
 }
 
 .controls button{
 
     padding:15px 25px;
+
+    min-width:120px;
 
     border:none;
 
@@ -50,6 +91,8 @@
     cursor:pointer;
 
     font-size:1rem;
+
+    font-weight:600;
 
     background:linear-gradient(
         135deg,
@@ -64,15 +107,35 @@
 
     transform:translateY(-4px);
 
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 
 .stats{
 
     display:flex;
+
     justify-content:center;
+
     gap:40px;
 
     margin-top:30px;
+}
+
+.stats div{
+
+    min-width:120px;
+}
+
+.stats h3{
+
+    font-size:2rem;
+
+    color:#4A5568;
+}
+
+.stats p{
+
+    color:#718096;
 }
 
 .laps{
@@ -88,11 +151,35 @@
 
 .lap-item{
 
-    padding:12px;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px;
 
     margin:10px 0;
 
     border-radius:15px;
 
     background:rgba(255,255,255,0.4);
+
+    font-weight:500;
+}
+
+@media(max-width:768px){
+
+    #display{
+        font-size:2rem;
+    }
+
+    .stats{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .controls button{
+        width:100%;
+    }
 }
