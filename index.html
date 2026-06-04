@@ -1,51 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-<section class="stopwatch-section" id="stopwatch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velune Stopwatch</title>
 
-    <div class="stopwatch-card">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <h2>Velune Stopwatch</h2>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-        <div id="display">
-            00 : 00 : 00 : 000
-        </div>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        <div class="controls">
+<body>
 
-            <button onclick="startTimer()">
-                Start
-            </button>
+    <section class="stopwatch-section" id="stopwatch">
 
-            <button onclick="pauseTimer()">
-                Pause
-            </button>
+        <div class="stopwatch-card">
 
-            <button onclick="resetTimer()">
-                Reset
-            </button>
+            <h2>⏱ Velune Stopwatch</h2>
 
-            <button onclick="addLap()">
-                Lap
-            </button>
-
-        </div>
-
-        <div class="stats">
-
-            <div>
-                <h3 id="lapCount">0</h3>
-                <p>Total Laps</p>
+            <!-- Stopwatch Display -->
+            <div id="display">
+                00 : 00 : 00 : 000
             </div>
 
-            <div>
-                <h3 id="bestLap">--</h3>
-                <p>Fastest Lap</p>
+            <!-- Control Buttons -->
+            <div class="controls">
+
+                <button id="startBtn">
+                    ▶ Start
+                </button>
+
+                <button id="pauseBtn">
+                    ⏸ Pause
+                </button>
+
+                <button id="resetBtn">
+                    ↺ Reset
+                </button>
+
+                <button id="lapBtn">
+                    ⏺ Lap
+                </button>
+
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats">
+
+                <div class="stat-box">
+                    <h3 id="lapCount">0</h3>
+                    <p>Total Laps</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3 id="bestLap">--</h3>
+                    <p>Fastest Lap</p>
+                </div>
+
+            </div>
+
+            <!-- Lap Records -->
+            <div class="laps" id="laps">
+
+                <!-- Laps will be added dynamically here -->
+
             </div>
 
         </div>
 
-        <div class="laps" id="laps">
-        </div>
+    </section>
 
-    </div>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
-</section>
+</body>
+
+</html>
+```
