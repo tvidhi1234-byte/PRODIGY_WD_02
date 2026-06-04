@@ -1,50 +1,46 @@
-
 let startTime;
 let elapsedTime = 0;
-let timerInterval;
+let timerInterval = null;
 
-let laps = [];
+let lapCounter = 0;
+let lapTimes = [];
 
-function timeToString(time){
+const display =
+document.getElementById("display");
 
-    let hrs =
-    Math.floor(time / 3600000);
+const lapsContainer =
+document.getElementById("laps");
 
-    let mins =
-    Math.floor((time % 3600000) / 60000);
+document
+.getElementById("startBtn")
+.addEventListener("click", startTimer);
 
-    let secs =
-    Math.floor((time % 60000) / 1000);
+document
+.getElementById("pauseBtn")
+.addEventListener("click", pauseTimer);
 
-    let ms =
-    Math.floor(time % 1000);
+document
+.getElementById("resetBtn")
+.addEventListener("click", resetTimer);
 
-    return (
-        String(hrs).padStart(2,'0')
-        + " : " +
-        String(mins).padStart(2,'0')
-        + " : " +
-        String(secs).padStart(2,'0')
-        + " : " +
-        String(ms).padStart(3,'0')
-    );
-}
+document
+.getElementById("lapBtn")
+.addEventListener("click", addLap);
 
 function startTimer(){
+
+    if(timerInterval) return;
 
     startTime =
     Date.now() - elapsedTime;
 
     timerInterval =
-    setInterval(function(){
+    setInterval(()=>{
 
         elapsedTime =
         Date.now() - startTime;
 
-        document.getElementById(
-            "display"
-        ).innerText =
-        timeToString(elapsedTime);
+        updateDisplay();
 
     },10);
 }
@@ -53,72 +49,101 @@ function pauseTimer(){
 
     clearInterval(timerInterval);
 
+    timerInterval = null;
 }
 
 function resetTimer(){
 
     clearInterval(timerInterval);
 
+    timerInterval = null;
+
     elapsedTime = 0;
 
-    laps = [];
+    lapCounter = 0;
 
-    document.getElementById(
-        "display"
-    ).innerText =
+    lapTimes = [];
+
+    display.textContent =
     "00 : 00 : 00 : 000";
 
-    document.getElementById(
-        "laps"
-    ).innerHTML = "";
+    lapsContainer.innerHTML = "";
 
-    document.getElementById(
-        "lapCount"
-    ).innerText = "0";
+    document
+    .getElementById("lapCount")
+    .textContent = "0";
 
-    document.getElementById(
-        "bestLap"
-    ).innerText = "--";
+    document
+    .getElementById("bestLap")
+    .textContent = "--";
+}
+
+function updateDisplay(){
+
+    const milliseconds =
+    elapsedTime % 1000;
+
+    const seconds =
+    Math.floor(elapsedTime / 1000) % 60;
+
+    const minutes =
+    Math.floor(elapsedTime / 60000) % 60;
+
+    const hours =
+    Math.floor(elapsedTime / 3600000);
+
+    display.textContent =
+    `${String(hours).padStart(2,"0")} :
+     ${String(minutes).padStart(2,"0")} :
+     ${String(seconds).padStart(2,"0")} :
+     ${String(milliseconds).padStart(3,"0")}`;
 }
 
 function addLap(){
 
-    let lapTime =
-    timeToString(elapsedTime);
+    if(elapsedTime === 0) return;
 
-    laps.push(elapsedTime);
+    lapCounter++;
 
-    const lapDiv =
-    document.createElement("div");
-
-    lapDiv.className =
-    "lap-item";
-
-    lapDiv.innerHTML =
-    "Lap " +
-    laps.length +
-    " — " +
-    lapTime;
+    lapTimes.push(elapsedTime);
 
     document
-    .getElementById("laps")
-    .prepend(lapDiv);
+    .getElementById("lapCount")
+    .textContent = lapCounter;
 
-    document.getElementById(
-        "lapCount"
-    ).innerText =
-    laps.length;
+    const lap =
+    document.createElement("div");
 
-    let fastest =
-    Math.min(...laps);
+    lap.classList.add("lap-item");
 
-    document.getElementById(
-        "bestLap"
-    ).innerText =
-    timeToString(fastest);
+    lap.innerHTML = `
+        <span>Lap ${lapCounter}</span>
+        <span>${display.textContent}</span>
+    `;
 
-    localStorage.setItem(
-        "veluneLaps",
-        JSON.stringify(laps)
-    );
+    lapsContainer.prepend(lap);
+
+    updateBestLap();
+}
+
+function updateBestLap(){
+
+    const fastest =
+    Math.min(...lapTimes);
+
+    const milliseconds =
+    fastest % 1000;
+
+    const seconds =
+    Math.floor(fastest / 1000) % 60;
+
+    const minutes =
+    Math.floor(fastest / 60000) % 60;
+
+    document
+    .getElementById("bestLap")
+    .textContent =
+    `${String(minutes).padStart(2,"0")} :
+     ${String(seconds).padStart(2,"0")} :
+     ${String(milliseconds).padStart(3,"0")}`;
 }
